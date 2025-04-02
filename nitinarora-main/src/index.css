@@ -1,0 +1,176 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 14% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 14% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 14% 6%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 196 100% 65%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 20% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 20% 14%;
+    --muted-foreground: 215 20.2% 75%;
+
+    --accent: 196 100% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 14%;
+    --input: 220 20% 14%;
+    --ring: 196 100% 65%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight;
+  }
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
+  }
+  h2 {
+    @apply text-3xl sm:text-4xl md:text-5xl;
+  }
+  h3 {
+    @apply text-2xl sm:text-3xl;
+  }
+  h4 {
+    @apply text-xl sm:text-2xl;
+  }
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24;
+  }
+  
+  .chip {
+    @apply inline-flex items-center py-1 px-3 rounded-full text-xs font-medium bg-secondary text-accent;
+  }
+  
+  .image-container {
+    @apply relative overflow-hidden rounded-lg bg-secondary;
+  }
+  
+  .image-loader {
+    @apply absolute inset-0 bg-secondary/50;
+  }
+  
+  .nav-link {
+    @apply relative px-3 py-2 transition-colors duration-300 hover:text-accent;
+  }
+  
+  .nav-link::after {
+    @apply content-[""] absolute left-0 bottom-0 w-0 h-0.5 bg-accent transition-all duration-300 ease-in-out;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  .project-card {
+    @apply relative overflow-hidden rounded-lg bg-card shadow-md border border-border transition-all duration-300 ease-in-out hover:shadow-xl hover:border-accent/30 hover:scale-[1.02];
+  }
+  
+  .skill-item {
+    @apply flex items-center gap-2 p-3 rounded-lg bg-card border border-border transition-all duration-300 hover:bg-accent/10 hover:border-accent/30 hover:scale-[1.02];
+  }
+  
+  .form-group {
+    @apply mb-6;
+  }
+  
+  .form-label {
+    @apply block mb-2 text-sm font-medium text-foreground;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-2 bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:border-accent;
+  }
+  
+  .form-textarea {
+    @apply w-full px-4 py-2 bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:border-accent;
+  }
+  
+  .form-button {
+    @apply w-full px-6 py-3 bg-accent text-background rounded-md transition-colors duration-300 hover:bg-accent/90;
+  }
+  
+  .blur-blob {
+    @apply absolute rounded-full opacity-30 blur-3xl -z-10;
+    background: radial-gradient(circle, rgba(56,182,255,0.8) 0%, rgba(56,182,255,0) 70%);
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-accent/90 to-accent/70;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-xl bg-black/40 border border-white/10 shadow-lg;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:translate-y-[-5px];
+  }
+  
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .shimmer::before {
+    @apply absolute inset-0;
+    content: '';
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
